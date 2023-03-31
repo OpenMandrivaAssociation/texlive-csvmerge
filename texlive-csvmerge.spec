@@ -1,6 +1,6 @@
 Name:		texlive-csvmerge
 Version:	51857
-Release:	1
+Release:	2
 Summary:	Merge TeX code with csv data
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/csvmerge
