@@ -3,7 +3,7 @@ Version:	51857
 Release:	2
 Summary:	Merge TeX code with csv data
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/csvmerge
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/csvmerge
 License:	lppl1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.doc.r%{version}.tar.xz
