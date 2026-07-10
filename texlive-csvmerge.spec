@@ -1,45 +1,29 @@
-Name:		texlive-csvmerge
-Version:	51857
-Release:	2
+%global tl_name csvmerge
+%global tl_revision 51857
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	Merge TeX code with csv data
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/csvmerge
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/csvmerge.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides macros for processing a csv spreadsheet
-file with a minimum of configuration for the csv file. The
-first row names the columns and the remaining rows are data.
-This data can be merged with TeX code residing in an auxiliary
-file and the process repeated for each data row. There is one
-macro to set things up, one to extract the data, and one to
-tell if the field is empty or not. The documentation contains
+This package provides macros for processing a csv spreadsheet file with
+a minimum of configuration for the csv file. The first row names the
+columns and the remaining rows are data. This data can be merged with
+TeX code residing in an auxiliary file and the process repeated for each
+data row. There is one macro to set things up, one to extract the data,
+and one to tell if the field is empty or not. The documentation contains
 examples.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/csvmerge
-%{_texmfdistdir}/tex/latex/csvmerge
-%doc %{_texmfdistdir}/doc/latex/csvmerge
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
